@@ -1,0 +1,255 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "This is a sample server for API test.",
+        "version": "1.0.0",
+        "title": "Swagger user API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "userLogin ",
+                "description": "login the user",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/login"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/login"
+                            }
+                        }
+                    }
+                },
+                "responses": {}
+            }
+        },
+        "/signup": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "userSignUp ",
+                "description": "sighup",
+                "operationId": "signup",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/signup"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/signup"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+        "/forgot/password": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "forgotPassword",
+                "description": "forgot the password",
+                "operationId": "forgotpassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/forgotpassword"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/forgotpassword"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+        "/reset/password": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "resetPassword",
+                "description": "to reset the password",
+                "operationId": "resetpassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/resetpassword"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/resetpassword"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+        "/change/password": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "changePassword",
+                "description": "to change the password",
+                "operationId": "changepassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/changepassword"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/changepassword"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+        "/profile": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                  "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "userProfile",
+                "description": "userProfile",
+                "operationId": "userProfile",
+                "schema": {
+                    "$ref": "#/components/schemas/profile"
+                },
+                "responses": {}
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "login": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "signup": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "forgotpassword": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "resetpassword": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                    "reset_token": {
+                        "type": "integer"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "changepassword": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                    "password": {
+                        "type": "string"
+                    },
+                    "new_password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "profile":{}
+        }
+    }
+}

@@ -1,0 +1,559 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "This is a sample server for API test.",
+        "version": "1.0.0",
+        "title": "Swagger Test APIs",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "paths": {
+        "/uploadFile": {
+            "post": {
+                "tags": [
+                    "upload file"
+                ],
+                "summary": " To upload image ",
+                "description": "Uploads a image file to the server.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "profile_image": {
+                                        "type": "string",
+                                        "format": "base64"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {}
+            }
+        },
+        "/publishArticle": {
+            "post": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "create the post",
+                "description": "create a post",
+                "operationId": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/post"
+                            }
+                        },
+                        "application/x-www-form-urlencoded":{
+                        "schema":{
+                          "$ref": "#/components/schemas/PetForm"
+                        }
+                    }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+        "/fetchPublishedArticle": {
+            "get": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "fecth the post",
+                "description": "get all details",
+                "operationId": "getall",
+                "schema": {
+                    "$ref": "#/components/schemas/getAll"
+                },
+                "responses": {}
+            }
+        },
+        "/isActive": {
+            "get": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "get the active post",
+                "description": "get a active post",
+                "operationId": "getActivePost",
+                "schema": {
+                    "$ref": "#/components/schemas/isActive"
+                },
+                "responses": {}
+            }
+        },
+        "/publishedArticle/{id}": {
+            "get": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "Get a user by ID",
+                "description": "get post",
+                "operationId": "get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "insert the ID",
+                        "type": "integer"
+                    }
+                ],
+                "minimum": 1,
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/id"
+                
+                },
+                "responses": {               
+            }
+            }
+        },
+        "/changeArticle/{id}": {
+            "put": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "update a user by ID",
+                "description": "update record",
+                "operationId": "putdata",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "insert the ID",
+                        "type": "integer"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/put"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/put"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {            
+            }
+            }
+        },
+        "/removeArticle/{id}": {
+            "delete": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "delete a user by ID",
+                "description": "delete record",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "insert the ID",
+                        "type": "integer"
+                    }
+                ],
+                "required": true,
+                "responses": {            
+            }
+            }
+        },
+        "/removeAllArticle": {
+            "delete": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "delete all user",
+                "description": "delete record",
+                "operationId": "deleteAll",
+                "required": true,
+                "responses": {}
+            }
+        },
+
+
+        "/contactUs": {
+            "post": {
+                "tags": [
+                    "contactUs"
+                ],
+                "summary": "contactUs",
+                "description": "contactUs",
+                "operationId": "contact",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/contactUs"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/contactUs"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+
+        "/createGallery": {
+            "post": {
+                "tags": [
+                    "gallery"
+                ],
+                "summary": "create the post",
+                "description": "create a post",
+                "operationId": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createGallery"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createGallery"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+
+        "/gallery": {
+            "get": {
+                "tags": [
+                    "gallery"
+                ],
+                "summary": "fecth the post",
+                "description": "get all details",
+                "operationId": "gallery",
+                "schema": {
+                    "$ref": "#/components/schemas/gallery"
+                },
+                "responses": {}
+            }
+        },
+
+        "/createBooking": {
+            "post": {
+                "tags": [
+                    "Skype Booking"
+                ],
+                "summary": "create the post",
+                "description": "create a post",
+                "operationId": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createBooking"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createBooking"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+
+        "/getBooking": {
+            "get": {
+                "tags": [
+                    "Skype Booking"
+                ],
+                "summary": "fecth the post",
+                "description": "get all details",
+                "operationId": "gallery",
+                "schema": {
+                    "$ref": "#/components/schemas/getBooking"
+                },
+                "responses": {}
+            }
+        },
+        "/postWebinar": {
+            "post": {
+                "tags": [
+                    "Webinar"
+                ],
+                "summary": "create the post",
+                "description": "create a post",
+                "operationId": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/postWebinar"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/postWebinar"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {}
+            }
+        },
+
+        "/getWebinar": {
+            "get": {
+                "tags": [
+                    "Webinar"
+                ],
+                "summary": "fecth the post",
+                "description": "get all details",
+                "operationId": "Webinar",
+                "schema": {
+                    "$ref": "#/components/schemas/getWebinar"
+                },
+                "responses": {}
+            }
+        },
+        "/getWebinarId/{id}": {
+            "get": {
+                "tags": [
+                    "Webinar"
+                ],
+                "summary": "Get a user by ID",
+                "description": "get post",
+                "operationId": "get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "insert the ID",
+                        "type": "integer"
+                    }
+                ],
+                "minimum": 1,
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/idData"
+                
+                },
+                "responses": {               
+            }
+            }
+        }
+
+      
+
+        },
+        "externalDocs": {
+            "description": "Find out more about Swagger",
+            "url": "http://swagger.io"
+        },
+        "servers": [
+            {
+                "url": "http://localhost:8000"
+            }
+        ],
+        "components": {
+            "securitySchemes": {
+                "Bearer": {
+                    "type": "apiKey",
+                    "name": "Authorization",
+                    "in": "header"
+                }
+            },
+            "schemas": {
+                "imageupload": {
+                    " MultiRequest": {
+                        "type": "object",
+                        "required": [],
+                        "properties": {
+                            "profile_image": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "image": {
+                            "type": "string",
+                            "required":true
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "discription": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "PetForm":{
+              "type": "object",
+              "properties":{
+                "image": {        
+                  "type": "string",
+                  "description": "text",
+                  "required":true
+
+              },
+                  "title":{  
+                  "type": "integer",
+                  "required":true
+            },
+                  "discription":{
+                    "type": "string",
+                    "required":true
+                  }
+                }
+            },      
+                "getAll": {},
+                "gallery":{},
+                "isActive": {},
+                "id": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "put": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "image": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "discription": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "deleteAll":{},
+                "contactUs":{
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "integer"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "createGallery": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "image": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "createBooking": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "date": {
+                            "type": "string"
+                        },
+                        "discription":{
+                           "type":"string"
+                        },
+                        "time_slot_from":{
+                            "type":"string"
+                        },
+                        "time_slot_to":{
+                            "type":"string"
+                        }
+                    }
+                },
+                "getBooking":{
+
+                },
+                "postWebinar": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "video": {
+                            "type": "string"
+                        },
+                        "title":{
+                           "type":"string"
+                        },
+                        "discription":{
+                            "type":"string"
+                        }
+                    }
+                },
+                "getWebinar":{},
+                "idData": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }

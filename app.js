@@ -14,15 +14,15 @@ const homeSwagger= require("./modules/home/swagger.json");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-const route = require("./modules/home/home.route");
-app.use("/", route);
-// const route = require("./modules/user/user.route");
+// const route = require("./modules/home/home.route");
 // app.use("/", route);
+const route = require("./modules/user/user.route");
+app.use("/", route);
 app.use('/uploads/small', express.static('uploads/small'));
 app.use('/uploads/original', express.static('uploads/original'));
 app.use('/uploads/medium', express.static('uploads/medium'));
 app.use('/api-docs', express.static(path.join(__dirname, 'public')))
-app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(homeSwagger));
+app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(userSwagger));
 // const info = {
 //     version: '1.0.0',
 //       title: "Everlens v2",
